@@ -39,4 +39,14 @@ public class TransactionController {
     public ResponseEntity<Double> getTotalTransactionCosts(@PathVariable("id") Long id) { //@PathVariable("id"): PathVariable at class level.
         return transactionService.getTotalTransactions(id);
     }
+
+    //----------------------------------------------------------------------------------------------------
+    // Delete a user transaction.
+
+    @DeleteMapping("/remove/{item}")
+    public ResponseEntity<String> removeTransaction(@ PathVariable("id")Long id, @PathVariable String item){
+        return transactionService.removeTransaction(id, item);
+    }
+
+
 }

@@ -1,9 +1,13 @@
 package app.tracker.EveryDollar.classes;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,4 +24,7 @@ public class UserAccount {
     private String email;
 
 
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Transaction> transactions = new ArrayList<>();
 }

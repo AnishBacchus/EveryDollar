@@ -62,5 +62,21 @@ public class TransactionService {
 
     }
 
+    //----------------------------------------------------------------------------------------------------
+    // Delete a user transaction.
+
+    public ResponseEntity<String> removeTransaction(Long id,String item){
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountIdAndItem(id, item);
+
+        if (userTransactions.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User has no transactions.");
+        }
+
+        transactionRepository.delete(userTransactions.get(0));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    }
+
+
 
 }

@@ -16,6 +16,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    private String item;
     private double amount;
     private String category;
     private String description;
