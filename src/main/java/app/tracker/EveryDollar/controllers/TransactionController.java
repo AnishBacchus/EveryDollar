@@ -41,10 +41,19 @@ public class TransactionController {
     }
 
     //----------------------------------------------------------------------------------------------------
+    // Update user's total transaction amount.
+
+    @PutMapping("/amount/{oldAmount}/{newAmount}")
+    public ResponseEntity<String> updateTransactionAmount(@PathVariable("id") Long id, @PathVariable Double oldAmount, @PathVariable Double newAmount) {
+        return transactionService.updateTransaction(id, oldAmount, newAmount);
+    }
+
+
+    //----------------------------------------------------------------------------------------------------
     // Delete a user transaction.
 
     @DeleteMapping("/remove/{item}")
-    public ResponseEntity<String> removeTransaction(@ PathVariable("id")Long id, @PathVariable String item){
+    public ResponseEntity<String> removeTransaction(@PathVariable("id") Long id, @PathVariable String item) {
         return transactionService.removeTransaction(id, item);
     }
 

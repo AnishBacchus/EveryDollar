@@ -63,12 +63,30 @@ public class TransactionService {
     }
 
     //----------------------------------------------------------------------------------------------------
+    // Update user's total transaction costs.
+
+    public ResponseEntity<String> updateTransaction(Long id, Double cost, Double newCost) {
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountIdAndAmount(id, cost);
+
+        if (userTransactions.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Wrong cost.");
+        }
+
+        Transaction existingTransaction = userTransactions.get(0);
+        existingTransaction.setAmount(newCost);
+        transactionRepository.save(existingTransaction);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Cost updated.");
+
+    }
+
+    //----------------------------------------------------------------------------------------------------
     // Delete a user transaction.
 
-    public ResponseEntity<String> removeTransaction(Long id,String item){
+    public ResponseEntity<String> removeTransaction(Long id, String item) {
         List<Transaction> userTransactions = transactionRepository.findByUserAccountIdAndItem(id, item);
 
-        if (userTransactions.isEmpty()){
+        if (userTransactions.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User has no transactions.");
         }
 
@@ -76,7 +94,6 @@ public class TransactionService {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
-
 
 
 }
