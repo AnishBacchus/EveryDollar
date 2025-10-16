@@ -1,0 +1,66 @@
+package app.tracker.EveryDollar.services;
+
+
+import app.tracker.EveryDollar.classes.Transaction;
+import app.tracker.EveryDollar.classes.UserAccount;
+import app.tracker.EveryDollar.repositories.TransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class TransactionService {
+
+    @Autowired
+    TransactionRepository transactionRepository;
+
+    @Autowired
+    UserService userService;
+
+    //----------------------------------------------------------------------------------------------------
+    // Creates a transaction for a user.
+
+    public ResponseEntity<String> addTransaction(Long id, Transaction transaction) {
+        Optional<UserAccount> userAccountOptional = userService.findById(id);
+
+        if (userAccountOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User is not found");
+        }
+
+        UserAccount user = userAccountOptional.get();
+        transaction.setUserAccount(user);
+        transactionRepository.save(transaction);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Transaction added to user!");
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    // Get a user's transactions.
+
+    public ResponseEntity<List<Transaction>> getUserTransactions(Long id) {
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountId(id);
+
+        if (userTransactions.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userTransactions);
+        }
+
+        return ResponseEntity.ok(userTransactions);
+
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    // Get a user's total transaction costs.
+
+    public ResponseEntity<Double> getTotalTransactions(Long id) {
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountId(id);
+
+        double total = userTransactions.stream().mapToDouble(Transaction::getAmount).sum();
+        return ResponseEntity.ok(total);
+
+    }
+
+
+}
