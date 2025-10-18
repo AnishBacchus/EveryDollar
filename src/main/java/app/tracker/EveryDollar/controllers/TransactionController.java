@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users/{id}/transactions")
 public class TransactionController {
@@ -38,6 +39,14 @@ public class TransactionController {
     @GetMapping("/total")
     public ResponseEntity<Double> getTotalTransactionCosts(@PathVariable("id") Long id) { //@PathVariable("id"): PathVariable at class level.
         return transactionService.getTotalTransactions(id);
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    // Get a specific transaction for a user.
+
+    @GetMapping("/{item}")
+    public ResponseEntity<List<Transaction>> getTransactionsByItem(@PathVariable("id") Long id, @PathVariable String item){
+        return transactionService.getTransactionsByItem(id, item);
     }
 
     //----------------------------------------------------------------------------------------------------

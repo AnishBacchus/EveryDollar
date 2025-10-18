@@ -63,6 +63,22 @@ public class TransactionService {
     }
 
     //----------------------------------------------------------------------------------------------------
+    // Get a specific transaction for a user.
+
+    public ResponseEntity<List<Transaction>> getTransactionsByItem(Long id, String item){
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountIdAndItemContainingIgnoreCase(id, item);
+
+        if (userTransactions.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userTransactions);
+        }
+
+        return ResponseEntity.ok(userTransactions);
+
+    }
+
+
+
+    //----------------------------------------------------------------------------------------------------
     // Update user's total transaction costs.
 
     public ResponseEntity<String> updateTransaction(Long id, Double cost, Double newCost) {
