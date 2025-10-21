@@ -44,9 +44,17 @@ public class TransactionController {
     //----------------------------------------------------------------------------------------------------
     // Get a specific transaction for a user.
 
-    @GetMapping("/{item}")
+    @GetMapping("/search/{item}")
     public ResponseEntity<List<Transaction>> getTransactionsByItem(@PathVariable("id") Long id, @PathVariable String item){
         return transactionService.getTransactionsByItem(id, item);
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    // Get transactions from a certain category for a user.
+
+    @GetMapping("/{category}")
+    public ResponseEntity<List<Transaction>> getTransactionByCategory(@PathVariable("id")Long id, @PathVariable String category){
+        return transactionService.getAllTransactionsByCategory(id, category);
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -62,7 +70,7 @@ public class TransactionController {
     // Delete a user transaction.
 
     @DeleteMapping("/remove/{item}")
-    public ResponseEntity<String> removeTransaction(@PathVariable("id") Long id, @PathVariable String item) {
+    public ResponseEntity<String> removeTransaction(@PathVariable("id")Long id, @PathVariable String item) {
         return transactionService.removeTransaction(id, item);
     }
 

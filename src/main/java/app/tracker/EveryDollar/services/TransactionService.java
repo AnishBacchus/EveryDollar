@@ -76,6 +76,17 @@ public class TransactionService {
 
     }
 
+    //----------------------------------------------------------------------------------------------------
+    // Get transactions from a certain category for a user.
+
+    public ResponseEntity<List<Transaction>> getAllTransactionsByCategory(Long id, String category){
+        List<Transaction> userTransactions = transactionRepository.findByUserAccountIdAndCategory(id, category);
+
+        if(userTransactions.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(userTransactions);
+        }
+        return ResponseEntity.ok(userTransactions);
+    }
 
 
     //----------------------------------------------------------------------------------------------------

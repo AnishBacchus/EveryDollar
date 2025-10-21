@@ -12,4 +12,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findByUserAccountIdAndItem(Long id, String item);
     List<Transaction> findByUserAccountIdAndItemContainingIgnoreCase(Long id, String item);
     List<Transaction> findByUserAccountIdAndAmount(Long id, Double cost);
+    List<Transaction> findByUserAccountIdAndCategory(Long id, String category);
 }
