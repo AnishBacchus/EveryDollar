@@ -3,6 +3,7 @@ package app.tracker.EveryDollar.services;
 
 import app.tracker.EveryDollar.classes.Transaction;
 import app.tracker.EveryDollar.classes.UserAccount;
+import app.tracker.EveryDollar.dtos.TransactionDTO;
 import app.tracker.EveryDollar.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +25,20 @@ public class TransactionService {
     //----------------------------------------------------------------------------------------------------
     // Creates a transaction for a user.
 
-    public ResponseEntity<String> addTransaction(Long id, Transaction transaction) {
+    public ResponseEntity<String> addTransaction(Long id, TransactionDTO transactionDTO) {
         Optional<UserAccount> userAccountOptional = userService.findById(id);
 
         if (userAccountOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User is not found");
         }
+
+        Transaction transaction = new Transaction();
+
+        transaction.setItem(transactionDTO.getItem());
+        transaction.setAmount(transactionDTO.getAmount());
+        transaction.setCategory(transactionDTO.getCategory());
+        transaction.setDescription(transactionDTO.getDescription());
+        transaction.setDate(transactionDTO.getDate());
 
         UserAccount user = userAccountOptional.get();
         transaction.setUserAccount(user);

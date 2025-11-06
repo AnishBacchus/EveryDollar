@@ -1,6 +1,5 @@
 package app.tracker.EveryDollar.controllers;
 
-import app.tracker.EveryDollar.classes.UserAccount;
 import app.tracker.EveryDollar.dtos.UserCreateDTO;
 import app.tracker.EveryDollar.dtos.UserResponseDTO;
 import app.tracker.EveryDollar.services.UserService;

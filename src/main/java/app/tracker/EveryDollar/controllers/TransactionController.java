@@ -1,7 +1,9 @@
 package app.tracker.EveryDollar.controllers;
 
 import app.tracker.EveryDollar.classes.Transaction;
+import app.tracker.EveryDollar.dtos.TransactionDTO;
 import app.tracker.EveryDollar.services.TransactionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +23,8 @@ public class TransactionController {
     // Creates a transaction for a user.
 
     @PostMapping
-    public ResponseEntity<String> addNewTransaction(@PathVariable Long id, @RequestBody Transaction transaction) {
-        return transactionService.addTransaction(id, transaction);
+    public ResponseEntity<String> addNewTransaction(@PathVariable Long id, @Valid @RequestBody TransactionDTO transactionDTO) {
+        return transactionService.addTransaction(id, transactionDTO);
     }
 
     //----------------------------------------------------------------------------------------------------
