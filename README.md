@@ -13,13 +13,13 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 
 ## 🛠️Tech Stack
 
-## ⚙️Backend:
+⚙️Backend:
 - Java Spring Boot
 - Spring JPA
 - MySQL
 - Spring Security
 
-## 🖥️Frontend:
+🖥️Frontend:
 - HTML & CSS
 - JavaScript
 
