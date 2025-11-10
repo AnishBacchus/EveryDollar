@@ -9,6 +9,9 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 ## ⚡Features:
 - User Login/Authentication with JWT
 - Persistent data storage with MySQL
+- API endpoints to create, get, update, and delete transactions
+- Transactions per user
+- Validation fields
 - Fast API Response times
 
 ## 🛠️Tech Stack
