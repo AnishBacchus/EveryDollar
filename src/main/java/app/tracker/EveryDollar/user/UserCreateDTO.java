@@ -1,4 +1,4 @@
-package app.tracker.EveryDollar.dtos;
+package app.tracker.EveryDollar.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,10 +1,8 @@
-package app.tracker.EveryDollar.services;
+package app.tracker.EveryDollar.transaction;
 
 
-import app.tracker.EveryDollar.classes.Transaction;
-import app.tracker.EveryDollar.classes.UserAccount;
-import app.tracker.EveryDollar.dtos.TransactionDTO;
-import app.tracker.EveryDollar.repositories.TransactionRepository;
+import app.tracker.EveryDollar.user.UserAccount;
+import app.tracker.EveryDollar.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

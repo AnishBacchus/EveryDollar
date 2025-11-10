@@ -1,4 +1,4 @@
-package app.tracker.EveryDollar.dtos;
+package app.tracker.EveryDollar.user;
 
 import lombok.Getter;
 import lombok.Setter;

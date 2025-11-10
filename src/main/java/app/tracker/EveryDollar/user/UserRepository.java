@@ -1,12 +1,9 @@
-package app.tracker.EveryDollar.repositories;
+package app.tracker.EveryDollar.user;
 
 
-import app.tracker.EveryDollar.classes.Transaction;
-import app.tracker.EveryDollar.classes.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

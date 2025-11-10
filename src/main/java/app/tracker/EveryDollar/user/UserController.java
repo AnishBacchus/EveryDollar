@@ -1,8 +1,5 @@
-package app.tracker.EveryDollar.controllers;
+package app.tracker.EveryDollar.user;
 
-import app.tracker.EveryDollar.dtos.UserCreateDTO;
-import app.tracker.EveryDollar.dtos.UserResponseDTO;
-import app.tracker.EveryDollar.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

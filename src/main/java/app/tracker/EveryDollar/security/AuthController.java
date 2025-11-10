@@ -1,7 +1,6 @@
-package app.tracker.EveryDollar.controllers;
+package app.tracker.EveryDollar.security;
 
-import app.tracker.EveryDollar.dtos.LoginDTO;
-import app.tracker.EveryDollar.services.LoginService;
+import app.tracker.EveryDollar.user.LoginDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthController {
 
+
     @Autowired
-    LoginService loginService;
+    AuthService authService;
 
     //----------------------------------------------------------------------------------------------------
     // Logs a user in.
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@Valid @RequestBody LoginDTO loginDTO){
-        return loginService.userLogin(loginDTO);
+    public ResponseEntity<?> login(@Valid @RequestBody LoginDTO loginDTO){
+        return authService.login(loginDTO.getUsername(), loginDTO.getPassword());
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<String> logut(){
-        return loginService.userLogout();
+        return ResponseEntity.ok("Logged out sucessfully.");
     }
 
 }

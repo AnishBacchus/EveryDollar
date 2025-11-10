@@ -1,6 +1,7 @@
-package app.tracker.EveryDollar.classes;
+package app.tracker.EveryDollar.user;
 
 
+import app.tracker.EveryDollar.transaction.Transaction;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,16 +1,10 @@
-package app.tracker.EveryDollar.services;
+package app.tracker.EveryDollar.user;
 
-import app.tracker.EveryDollar.classes.UserAccount;
-import app.tracker.EveryDollar.dtos.LoginDTO;
-import app.tracker.EveryDollar.repositories.UserRepository;
+import app.tracker.EveryDollar.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
 
 @Service
 public class LoginService {
@@ -20,6 +14,9 @@ public class LoginService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtService jwtService;
 
 
     //----------------------------------------------------------------------------------------------------
@@ -38,7 +35,8 @@ public class LoginService {
             return ResponseEntity.status(401).body("Invalid password");
         }
 
-        return ResponseEntity.ok("Login successful!");
+        String token = jwtService.generateToken(userAccount.getUsername());
+        return ResponseEntity.ok(token);
     }
 
     //----------------------------------------------------------------------------------------------------
