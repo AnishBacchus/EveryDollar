@@ -39,9 +39,10 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 - MySQL relational database integration via Spring JPA
 
 ## 💡Roadmap:
-- Login/Logout UI in frontend.
 - Implement email verification.
 - Reset password
 - filter transactions by month.
 - Chart section in frontend using ChartJS.
 - Budgeting section.
+- Adjust Sign In button colors
+*/
