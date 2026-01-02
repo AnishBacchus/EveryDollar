@@ -45,4 +45,4 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 - Chart section in frontend using ChartJS.
 - Budgeting section.
 - Adjust Sign In button colors
-*/
+
