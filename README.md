@@ -9,6 +9,9 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 ## ⚡Features:
 - User Login/Authentication with JWT
 - Persistent data storage with MySQL
+- API endpoints to create, get, update, and delete transactions
+- Transactions per user
+- Validation fields
 - Fast API Response times
 
 ## 🛠️Tech Stack
@@ -36,9 +39,10 @@ Frontend Code: https://github.com/AnishBacchus/EveryDollarFrontend
 - MySQL relational database integration via Spring JPA
 
 ## 💡Roadmap:
-- Login/Logout UI in frontend.
 - Implement email verification.
 - Reset password
 - filter transactions by month.
 - Chart section in frontend using ChartJS.
 - Budgeting section.
+- Adjust Sign In button colors
+
