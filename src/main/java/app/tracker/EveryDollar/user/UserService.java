@@ -23,6 +23,7 @@ public class UserService {
     public ResponseEntity<String> create(UserCreateDTO userDTO) {
         UserAccount user = new UserAccount();
 
+        user.setName(userDTO.getName());
         user.setUsername(userDTO.getUsername());
         String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
         user.setPassword(encodedPassword);

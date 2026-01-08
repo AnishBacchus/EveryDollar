@@ -11,6 +11,9 @@ import lombok.Setter;
 public class UserCreateDTO {
 
     @NotBlank
+    private String name;
+
+    @NotBlank
     @Size(min = 5, max = 20)
     private String username;
 
